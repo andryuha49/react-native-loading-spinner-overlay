@@ -140,8 +140,7 @@ export default class Spinner extends React.PureComponent {
     const spinner = (
       <View
         style={[styles.container, { backgroundColor: this.props.overlayColor }]}
-        key={`spinner_${Date.now()}`}
-      >
+        key={`spinner_${Date.now()}`}>
         {this.props.children
           ? this.props.children
           : this._renderDefaultContent()}
@@ -149,16 +148,23 @@ export default class Spinner extends React.PureComponent {
     );
 
     return (
-      <Modal
-        animationType={this.props.animation}
-        onRequestClose={() => this._handleOnRequestClose()}
-        supportedOrientations={['landscape', 'portrait']}
-        transparent
-        visible={this.state.visible}
-      >
+      <View style={{backgroundColor:'transparent', position: 'absolute', top: 0, bottom: 0, left: 0, right: 0}}
+            visible={this.state.visible}>
         {spinner}
-      </Modal>
+      </View>
     );
+
+    // return (
+    //   <Modal
+    //     animationType={this.props.animation}
+    //     onRequestClose={() => this._handleOnRequestClose()}
+    //     supportedOrientations={['landscape', 'portrait']}
+    //     transparent
+    //     visible={this.state.visible}
+    //   >
+    //     {spinner}
+    //   </Modal>
+    // );
   }
 
   render() {
